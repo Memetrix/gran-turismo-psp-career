@@ -32,7 +32,7 @@
   <main>
     <div class="eyebrow">Gran Turismo PSP Career</div>
     <h1>Find the right patch for your game</h1>
-    <p>Choose your original Gran Turismo PSP ISO. This page checks it on your device and points you to the matching beta patch. Your game file is never uploaded.</p>
+    <p>Choose your original Gran Turismo PSP ISO. This page checks it on your device and points you to the matching patch. Your game file is never uploaded.</p>
 
     <div class="panel">
       <label for="iso">Choose your original ISO</label>
@@ -46,16 +46,18 @@
       </div>
     </div>
 
-    <p class="small">Use a copy of your ISO when applying the patch with <a href="https://deltapatcher.net/">Delta Patcher</a>. See the <a href="https://github.com/Memetrix/gran-turismo-psp-career/blob/main/INSTALL.md">installation guide</a> for the three supported USA versions and save instructions. The European version is planned for the full release after beta.</p>
-    <details><summary>What does this page check?</summary><p>It reads the file size and CRC32 locally. Delta Patcher then verifies the original image before applying the patch. Supported USA CRC32 values: <code>9613AC93</code>, <code>1EADB6B4</code>, and <code>71DCC467</code>.</p></details>
+    <p class="small">Use a copy of your ISO when applying the patch with <a href="https://deltapatcher.net/">Delta Patcher</a>. See the <a href="https://github.com/Memetrix/gran-turismo-psp-career/blob/main/INSTALL.md">installation guide</a> for the three supported USA versions and save instructions. The European version is not supported yet.</p>
+    <details><summary>What does this page check?</summary><p>It reads the file size and CRC32 locally. Delta Patcher then verifies the original image before applying the patch. Supported USA CRC32 values: <code>9613AC93</code>, <code>1EADB6B4</code>, and <code>71DCC467</code>. If you choose an already patched ISO, it checks that it is the finished 1.0.0 image (CRC32 <code>5FCB3D96</code>).</p></details>
   </main>
   <script>
     const expectedSize = 1097826304;
-    const release = 'https://github.com/Memetrix/gran-turismo-psp-career/releases/download/v0.27.2-beta.1/';
+    const patchedSize = 1132199936;
+    const patchedCrc = '5FCB3D96';
+    const release = 'https://github.com/Memetrix/gran-turismo-psp-career/releases/download/v1.0.0/';
     const variants = {
-      '9613AC93': ['USA UMD v1.00', 'GT-Career-SpecII-v0.27.2-beta.1-USA-UMD-v1.xdelta'],
-      '1EADB6B4': ['USA UMD v2.00', 'GT-Career-SpecII-v0.27.2-beta.1-USA-UMD-v2.xdelta'],
-      '71DCC467': ['Originally supported USA v2.00 image', 'GT-Career-SpecII-v0.27.2-beta.1.xdelta']
+      '9613AC93': ['USA UMD v1.00', 'Gran-Turismo-PSP-Career-v1.0.0-USA-UMD-v1.xdelta'],
+      '1EADB6B4': ['USA UMD v2.00', 'Gran-Turismo-PSP-Career-v1.0.0-USA-UMD-v2.xdelta'],
+      '71DCC467': ['Originally supported USA v2.00 image', 'Gran-Turismo-PSP-Career-v1.0.0.xdelta']
     };
     const table = new Uint32Array(256);
     for (let i = 0; i < 256; i++) {
@@ -81,8 +83,8 @@
       progress.value = 0;
       status.textContent = 'Checking ' + file.name + '…';
       try {
-        if (file.size !== expectedSize) {
-          showUnsupported('This is not one of the supported USA images. Check that you selected an unmodified ISO.');
+        if (file.size !== expectedSize && file.size !== patchedSize) {
+          showUnsupported('This is not one of the supported USA images or the finished 1.0.0 ISO. Check that you selected an unmodified ISO.');
           return;
         }
         let crc = 0xFFFFFFFF;
@@ -95,9 +97,20 @@
           await new Promise(resolve => setTimeout(resolve, 0));
         }
         const checksum = ((crc ^ 0xFFFFFFFF) >>> 0).toString(16).padStart(8, '0').toUpperCase();
+        if (file.size === patchedSize) {
+          if (checksum === patchedCrc) {
+            title.textContent = 'This is the finished 1.0.0 ISO';
+            description.textContent = 'CRC32 ' + checksum + ' matches Gran Turismo PSP Career 1.0.0. Copy it to your PSP or open it in PPSSPP.';
+            result.hidden = false;
+            status.textContent = 'Check complete.';
+          } else {
+            showUnsupported('This patched ISO has CRC32 ' + checksum + ', not ' + patchedCrc + '. It is from another version or the patch did not finish. Patch a copy of your original ISO again.');
+          }
+          return;
+        }
         const match = variants[checksum];
         if (!match) {
-          showUnsupported('This ISO is not supported by the current beta (CRC32 ' + checksum + '). Check that it is an unmodified USA image.');
+          showUnsupported('This ISO is not supported yet (CRC32 ' + checksum + '). Check that it is an unmodified USA image.');
           return;
         }
         title.textContent = 'Your ISO is supported';
@@ -116,7 +129,7 @@
     });
 
     function showUnsupported(message) {
-      title.textContent = 'No matching beta patch';
+      title.textContent = 'No matching patch';
       description.textContent = message;
       result.hidden = false;
       link.hidden = true;
