@@ -32,6 +32,8 @@ You need your own, unmodified **Gran Turismo PSP USA** ISO. The patch does not i
 
 All downloads are on the [1.0.0 release page](https://github.com/Memetrix/gran-turismo-psp-career/releases/tag/v1.0.0).
 
+The three `.xdelta` patches are also on the [Internet Archive mirror](https://archive.org/details/gran-turismo-psp-career-1.0.0), alongside screenshots and the trailer.
+
 ## Saves
 
 No game ISO, save file, or test profile is included in this release. Back up your savedata before installing. The career uses its own `UCUS98632-CAREER` slot; on first launch it copies the garage and credits from the stock `UCUS98632-GAMEDAT` slot when present. The stock slot is not overwritten.
