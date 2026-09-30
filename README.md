@@ -61,6 +61,7 @@ The career remembers bought tuning for up to **128 cars**. Beyond that, a new ca
 - **Rome runs slow** at the PSP's standard CPU clock: about 0.7x speed (50 seconds of game time per 1:10 of real time). The races are playable and finish normally. For full speed, set the game CPU clock to 333 MHz in your custom firmware's menu; no plugin is needed.
 - **Graphical glitches on all lost tracks**, most visible on Complex String. They don't affect driving. Complex String, Hong Kong, Smokey Mountain and Tahiti Dirt run at full speed.
 - **Tahiti Dirt replays** use camera positions from another track, so the replay can show the sea and cars in the air. The race itself is not affected.
+- **Car Options after leaving a race freezes the game.** If you pause a career race, choose Exit and then open Car Options on the grid, the game hangs. Restart the event from the menu instead. A fix is coming in the next update.
 - When an endurance segment starts near the finish line, the **best-lap display** can show the first partial lap as a very short lap. The race result is not affected.
 - **PSP-1000: a race may not start.** On a PSP-1000 the game can stay on the loading screen before a race. The PSP-1000 leaves the game about 350 KB of spare memory; if plugins and the ISO driver take more than that, no race loads, whatever the car and its tuning. Turn off game plugins and try again, and tell us your firmware and plugins if it still happens.
 
