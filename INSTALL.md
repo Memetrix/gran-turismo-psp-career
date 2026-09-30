@@ -46,6 +46,16 @@ Back up your savedata before installing. The career uses its own `UCUS98632-CARE
 
 The career remembers bought tuning for up to **128 cars**. Beyond that, a new car cannot be tuned until a tuned car is sold.
 
+## Questions
+
+- **PS Vita (Adrenaline):** players report it runs with UMD Mode **Inferno**, Force High Memory **Stable** and CPU 333/166. With UMD Mode M33 it can stop on a black screen after the intro movie.
+- **CHD:** extract it back to an ISO first (for example `chdman extractdvd`), then patch the ISO.
+- **UMD disc:** the patch needs an ISO. Dump your own disc to an ISO, then patch that.
+- **The v2.00 update is not needed:** there are patches for both USA v1.00 and v2.00.
+- **Next to the original:** yes. The patch writes a new ISO and leaves your original as it is. Both use the same save folder for the stock game; the career keeps its own `UCUS98632-CAREER` save.
+- **Language:** English only.
+- **Check the result:** choose the finished ISO on the [patch page](https://memetrix.github.io/gran-turismo-psp-career/), or look at its CRC in PPSSPP **Game info**: it must be `5FCB3D96`.
+
 ## PSP-1000
 
 On a PSP-1000 the game can stay on the loading screen before a race. The PSP-1000 leaves the game about 350 KB of spare memory; if plugins and the ISO driver take more than that, no race loads, whatever the car and its tuning. Turn off game plugins and try again, and [report](https://github.com/Memetrix/gran-turismo-psp-career/issues) your firmware and plugins if it still happens.
