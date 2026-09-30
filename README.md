@@ -8,6 +8,20 @@ Gran Turismo PSP Career is a fan-made career mode for **Gran Turismo PSP USA (UC
 
 It is an independent project, not a continuation or rework of anyone else's mod.
 
+## Watch the trailer
+
+[![Gran Turismo PSP Career 1.0 trailer](screenshots/trailer-thumbnail-1.0.jpg)](https://youtu.be/rywN0wkKEjA)
+
+## In the game
+
+| Career halls | Tuning shop |
+| --- | --- |
+| ![Career halls](screenshots/02-career-halls.png) | ![Tuning shop](screenshots/06-tuning-shop.png) |
+| Championship | Hong Kong |
+| ![Championship](screenshots/04-championship.png) | ![Hong Kong race](screenshots/10-hong-kong.png) |
+
+![Ferrari 458 Italia in the showroom](screenshots/11-458-showroom.png)
+
 ## Download and install
 
 You need your own, unmodified **Gran Turismo PSP USA** ISO. The patch does not include the game.
