@@ -102,7 +102,7 @@ And the **Ferrari 458 Italia**, which Polyphony planned for GT PSP and cut. Its 
 
 ## Installing
 
-You need your own unmodified Gran Turismo PSP ISO, USA version 1.00 or 2.00. One patch, `Gran-Turismo-PSP-Career-v1.1.xdelta` from the [1.1 release page](https://github.com/Memetrix/gran-turismo-psp-career/releases/latest), works with all three known USA dumps of the game. Apply it to your ISO with Delta Patcher on Windows or macOS, or UniPatcher on Android; the install guide has the steps. The patched game runs on a PSP with custom firmware and in PPSSPP. The European version is not supported.
+You need your own unmodified Gran Turismo PSP ISO, USA version 1.00 or 2.00. Open the [browser installer](https://memetrix.github.io/gran-turismo-psp-career/), choose your ISO and save the patched game. It works on computers and Android, and your ISO is never uploaded. Manual installation with Delta Patcher or UniPatcher is covered in [INSTALL.md](INSTALL.md). The patched game runs on a PSP with custom firmware and in PPSSPP. The European version is not supported.
 
 The career has its own save and copies your garage and credits from your normal save, which stays untouched.
 

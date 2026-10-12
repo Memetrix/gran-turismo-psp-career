@@ -4,6 +4,14 @@ You need your own unmodified **Gran Turismo PSP USA** ISO. The patch does not in
 
 One patch, `Gran-Turismo-PSP-Career-v1.1.xdelta` from the [release page](https://github.com/Memetrix/gran-turismo-psp-career/releases/latest), works with every supported USA ISO (see [Supported ISOs](#supported-isos)).
 
+## Install in your browser
+
+1. Open the [browser installer](https://memetrix.github.io/gran-turismo-psp-career/) and choose your original USA ISO.
+2. Keep the page open while it checks the ISO, downloads the patch and applies it. Your ISO stays on your device and the original file is not changed.
+3. Click **Save patched ISO**. Open the saved file in PPSSPP or copy it to your PSP's `ISO` folder.
+
+If your browser cannot finish, use one of the manual methods below.
+
 ## Windows and macOS (Delta Patcher)
 
 1. Download `Gran-Turismo-PSP-Career-v1.1.xdelta`, plus the free [Delta Patcher](https://deltapatcher.net/) for Windows or macOS.

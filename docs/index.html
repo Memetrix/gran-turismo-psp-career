@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Find your Gran Turismo PSP Career patch</title>
+  <meta name="description" content="Install Gran Turismo PSP Career in your browser. Choose your own original USA ISO and save the patched game. No upload required.">
+  <title>Install Gran Turismo PSP Career</title>
   <style>
     :root { color-scheme: dark; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
     body { margin: 0; background: #101216; color: #f3f4f6; }
@@ -14,127 +15,50 @@
     .panel { background: #1a1d24; border: 1px solid #343945; border-radius: 16px; padding: 24px; margin-top: 28px; }
     label { display: block; font-weight: 700; margin-bottom: 12px; }
     input { display: block; width: 100%; box-sizing: border-box; padding: 14px; border: 1px solid #626b7c; border-radius: 10px; background: #12151b; color: #f3f4f6; }
-    input:focus-visible, a:focus-visible { outline: 3px solid #8ea9ff; outline-offset: 3px; }
+    input:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid #8ea9ff; outline-offset: 3px; }
     progress { width: 100%; margin-top: 18px; accent-color: #8ea9ff; }
-    #status { margin-bottom: 0; }
+    #status { margin-bottom: 0; overflow-wrap: anywhere; }
     #result { margin-top: 20px; }
     #result h2 { margin: 0 0 8px; font-size: 22px; }
     .button { display: inline-block; background: #c7d2ff; color: #11131a; border-radius: 9px; padding: 13px 18px; font-weight: 750; text-decoration: none; margin: 10px 0; }
     .button:hover { background: #e1e6ff; }
+    button { font: inherit; cursor: pointer; }
+    #cancel { background: none; color: #c5cad3; border: 1px solid #626b7c; border-radius: 9px; padding: 9px 14px; margin-top: 14px; }
+    [hidden] { display: none !important; }
+    @media (max-width: 420px) { main { padding: 30px 16px 48px; } .panel { padding: 18px; } }
     .small { font-size: 14px; color: #aeb6c4; }
     code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
     details { margin-top: 22px; color: #aeb6c4; }
     summary { cursor: pointer; }
     a { color: #aabbff; }
   </style>
+  <script src="patch-config.js?v=20261012-1" defer></script>
+  <script src="patcher.js?v=20261012-1" defer></script>
 </head>
 <body>
   <main>
-    <div class="eyebrow">Gran Turismo PSP Career</div>
-    <h1>Find the right patch for your game</h1>
-    <p>Choose your original Gran Turismo PSP ISO. This page checks it on your device and points you to the matching patch. Your game file is never uploaded.</p>
+    <div class="eyebrow">Gran Turismo PSP Career 1.1</div>
+    <h1>A career mode for your GT PSP</h1>
+    <p>Choose your original USA ISO. We'll apply the career patch here and give you the finished game to save. Your ISO stays on your device.</p>
 
     <div class="panel">
       <label for="iso">Choose your original ISO</label>
-      <input id="iso" type="file" accept=".iso,application/octet-stream">
-      <progress id="progress" max="100" value="0" hidden></progress>
-      <p id="status" role="status">No file selected.</p>
+      <input id="iso" type="file" accept=".iso,application/octet-stream" aria-describedby="status">
+      <progress id="progress" max="100" value="0" aria-label="Installation progress" hidden></progress>
+      <p id="status" role="status" aria-live="polite">No file selected.</p>
+      <button id="cancel" type="button" hidden>Cancel</button>
       <div id="result" hidden>
         <h2 id="result-title"></h2>
         <p id="result-text"></p>
-        <a id="patch-link" class="button" hidden>Download the matching patch</a>
+        <a id="save-iso" class="button" hidden>Save patched ISO</a>
       </div>
+      <noscript><p>Enable JavaScript or use the <a href="https://github.com/Memetrix/gran-turismo-psp-career/blob/main/INSTALL.md">manual installation guide</a>.</p></noscript>
     </div>
 
-    <p class="small">Use a copy of your ISO when applying the patch with <a href="https://deltapatcher.net/">Delta Patcher</a>. See the <a href="https://github.com/Memetrix/gran-turismo-psp-career/blob/main/INSTALL.md">installation guide</a> for the three supported USA versions and save instructions. The European version is not supported yet.</p>
-    <details><summary>What does this page check?</summary><p>It reads the file size and CRC32 locally. Delta Patcher then verifies the original image before applying the patch. Supported USA CRC32 values: <code>9613AC93</code>, <code>1EADB6B4</code>, and <code>71DCC467</code>. If you choose an already patched ISO, it checks that it is the finished 1.1 image (CRC32 <code>A034807E</code>).</p></details>
+    <p class="small">Keep this page open until your ISO is ready. Once saved, open it in PPSSPP or copy it to your PSP's <code>ISO</code> folder. You'll need your own unmodified USA game; the European version is not supported yet.</p>
+    <p class="small"><a href="https://github.com/Memetrix/gran-turismo-psp-career/blob/main/INSTALL.md">Manual installation &amp; saves</a> · <a href="https://github.com/Memetrix/gran-turismo-psp-career/releases/latest">Download the patch</a></p>
+    <details><summary>Supported images &amp; checks</summary><p>USA ISO versions 1.00 and 2.00 are supported: CRC32 <code>9613AC93</code>, <code>1EADB6B4</code> or <code>71DCC467</code>. The patch download and finished ISO are checked before you can save it. The finished 1.1 ISO has CRC32 <code>A034807E</code>. Selecting an already patched ISO checks it without applying the patch again.</p></details>
+    <p class="small">Browser patching uses <a href="https://github.com/marcrobledo/RomPatcher.js">RomPatcher.js</a> by Marc Robledo. <a href="vendor/rompatcher/LICENSE">MIT licence</a>.</p>
   </main>
-  <script>
-    const expectedSize = 1097826304;
-    const patchedSize = 1137475584;
-    const patchedCrc = 'A034807E';
-    const release = 'https://github.com/Memetrix/gran-turismo-psp-career/releases/download/v1.1/';
-    const variants = {
-      '9613AC93': ['USA UMD v1.00', 'Gran-Turismo-PSP-Career-v1.1.xdelta'],
-      '1EADB6B4': ['USA UMD v2.00', 'Gran-Turismo-PSP-Career-v1.1.xdelta'],
-      '71DCC467': ['Originally supported USA v2.00 image', 'Gran-Turismo-PSP-Career-v1.1.xdelta']
-    };
-    const table = new Uint32Array(256);
-    for (let i = 0; i < 256; i++) {
-      let value = i;
-      for (let j = 0; j < 8; j++) value = value & 1 ? (value >>> 1) ^ 0xEDB88320 : value >>> 1;
-      table[i] = value >>> 0;
-    }
-    const input = document.getElementById('iso');
-    const progress = document.getElementById('progress');
-    const status = document.getElementById('status');
-    const result = document.getElementById('result');
-    const title = document.getElementById('result-title');
-    const description = document.getElementById('result-text');
-    const link = document.getElementById('patch-link');
-
-    input.addEventListener('change', async () => {
-      const file = input.files && input.files[0];
-      if (!file) return;
-      input.disabled = true;
-      result.hidden = true;
-      link.hidden = true;
-      progress.hidden = false;
-      progress.value = 0;
-      status.textContent = 'Checking ' + file.name + '…';
-      try {
-        if (file.size !== expectedSize && file.size !== patchedSize) {
-          showUnsupported('This is not one of the supported USA images or the finished 1.1 ISO. Check that you selected an unmodified ISO.');
-          return;
-        }
-        let crc = 0xFFFFFFFF;
-        const chunkSize = 4 * 1024 * 1024;
-        for (let offset = 0; offset < file.size; offset += chunkSize) {
-          const bytes = new Uint8Array(await file.slice(offset, offset + chunkSize).arrayBuffer());
-          for (let i = 0; i < bytes.length; i++) crc = (crc >>> 8) ^ table[(crc ^ bytes[i]) & 255];
-          progress.value = Math.round(Math.min(file.size, offset + bytes.length) * 100 / file.size);
-          status.textContent = 'Checking ' + file.name + '… ' + progress.value + '%';
-          await new Promise(resolve => setTimeout(resolve, 0));
-        }
-        const checksum = ((crc ^ 0xFFFFFFFF) >>> 0).toString(16).padStart(8, '0').toUpperCase();
-        if (file.size === patchedSize) {
-          if (checksum === patchedCrc) {
-            title.textContent = 'This is the finished 1.1 ISO';
-            description.textContent = 'CRC32 ' + checksum + ' matches Gran Turismo PSP Career 1.1. Copy it to your PSP or open it in PPSSPP.';
-            result.hidden = false;
-            status.textContent = 'Check complete.';
-          } else {
-            showUnsupported('This patched ISO has CRC32 ' + checksum + ', not ' + patchedCrc + '. It is from another version or the patch did not finish. Patch a copy of your original ISO again.');
-          }
-          return;
-        }
-        const match = variants[checksum];
-        if (!match) {
-          showUnsupported('This ISO is not supported yet (CRC32 ' + checksum + '). Check that it is an unmodified USA image.');
-          return;
-        }
-        title.textContent = 'Your ISO is supported';
-        description.textContent = 'Detected: ' + match[0] + '. Download this patch, then follow the installation guide.';
-        link.href = release + match[1];
-        link.hidden = false;
-        result.hidden = false;
-        status.textContent = 'Check complete.';
-      } catch (error) {
-        showUnsupported('Could not read this file. Please try again.');
-      } finally {
-        input.disabled = false;
-        input.value = '';
-        progress.hidden = true;
-      }
-    });
-
-    function showUnsupported(message) {
-      title.textContent = 'No matching patch';
-      description.textContent = message;
-      result.hidden = false;
-      link.hidden = true;
-      status.textContent = 'Check complete.';
-    }
-  </script>
 </body>
 </html>

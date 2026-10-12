@@ -1,0 +1,22 @@
+{
+  "repository": "https://github.com/marcrobledo/RomPatcher.js",
+  "commit": "3183884086825c3a57c72026234debcef1e2240c",
+  "license": "MIT",
+  "modifications": [
+    "RomPatcher.format.vcdiff.js: declare local var tempFile to avoid retaining a global ISO buffer."
+  ],
+  "files": [
+    {
+      "file": "BinFile.js",
+      "sha256": "3856e2f30bb8f105796a0371231a9b2aa37266148ac496711f07fd1e80fef688"
+    },
+    {
+      "file": "HashCalculator.js",
+      "sha256": "9d3a437aa3a75706533a44745f0201f773718be276d4e60bc2d7613ec01ab95a"
+    },
+    {
+      "file": "RomPatcher.format.vcdiff.js",
+      "sha256": "7f3a9618d3213ea68b7cb461e0f8067cbea42d9cab70827528f5a7a804c6156b"
+    }
+  ]
+}

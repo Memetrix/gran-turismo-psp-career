@@ -8,6 +8,12 @@ ELFs, compiled PRXs, extracted volumes, raw databases, models, sound banks and p
 
 ## Code
 
+The separate browser installer under `docs/` is this project's website code. Its decoder modules in
+`docs/vendor/rompatcher/` come from [RomPatcher.js](https://github.com/marcrobledo/RomPatcher.js), commit
+`3183884086825c3a57c72026234debcef1e2240c`, under MIT. Copyright and licence are retained; `UPSTREAM.json`
+records the local variable declaration fix. The website serves a byte-identical copy of the published
+1.1 xdelta. These installer files are not part of the patched game or the 1.1 gameplay source archive.
+
 | Part | Source | Licence |
 | --- | --- | --- |
 | `src/adhoc/` (files listed as upstream in `src/adhoc/UPSTREAM.md`) | [OpenAdhoc](https://github.com/Nenkai/OpenAdhoc) by Nenkai and contributors, commit `212cac08c01b4832234a120abcb47b4e693870d1`, byte-identical | GPL-3.0 |
