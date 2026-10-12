@@ -6,7 +6,7 @@ Gran Turismo PSP came out in 2009 with more than 800 cars and no career mode. Gr
 
 [**Download the patch**](https://github.com/Memetrix/gran-turismo-psp-career/releases/latest) · [**Install guide**](https://memetrix.github.io/gran-turismo-psp-career/)
 
-[![Watch the trailer](screenshots/1.1/eight-car-grid.jpg)](https://youtu.be/L62twE_V2KU)
+![Eight-car racing in Gran Turismo PSP Career](screenshots/1.1/eight-car-grid.jpg)
 
 <details>
 <summary>Already played 1.0? What's new in 1.1</summary>
@@ -24,6 +24,18 @@ Gran Turismo PSP came out in 2009 with more than 800 cars and no career mode. Gr
 - **Rally, dirt and snow** events.
 - **Licences** as in GT4, earned in GT PSP's own Driving Challenge.
 - **Every dealer is open every day**, and you can sell your cars.
+
+## Tuning
+
+Parts use GT4 (USA) prices:
+
+- Engine upgrades (turbo, NA tune, supercharger and more) and weight reduction
+- Gearboxes with the final drive and every ratio
+- LSD and brake balance
+- Tyres for tarmac, dirt and snow
+- Suspension kits
+- Repaint in the car's factory colours
+
 
 ## Five cut tracks
 
@@ -65,17 +77,6 @@ And the **Ferrari 458 Italia**, which Polyphony planned for GT PSP and cut. Its 
 - **Analog throttle and brake** on the right stick.
 - **Widescreen** aspect ratio in Options → Display.
 - **Burnout mode.**
-
-## Tuning
-
-Parts use GT4 (USA) prices:
-
-- Engine upgrades (turbo, NA tune, supercharger and more) and weight reduction
-- Gearboxes with the final drive and every ratio
-- LSD and brake balance
-- Tyres for tarmac, dirt and snow
-- Suspension kits
-- Repaint in the car's factory colours
 
 ## In the game
 
