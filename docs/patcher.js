@@ -46,7 +46,8 @@
     status.textContent = 'Cancelled. You can choose an ISO to try again.';
   });
 
-  input.addEventListener('change', () => {
+  function startSelectedFile() {
+    if (worker) return;
     const file = input.files && input.files[0];
     if (!file) return;
     stop(false);
@@ -110,5 +111,19 @@
     } catch (error) {
       fail('Could not read this ISO. Select a file from your device’s storage and try again.');
     }
+  }
+
+  if (typeof CAREER_PATCH === 'undefined') {
+    fail('The installer could not load. Reload this page or use the manual installation guide below.');
+    input.disabled = true;
+    return;
+  }
+  input.addEventListener('change', startSelectedFile);
+  // Mobile browsers can restore a selection without firing another change event.
+  window.addEventListener('pageshow', () => {
+    if (!worker && result.hidden) startSelectedFile();
   });
+  status.textContent = 'No file selected.';
+  input.disabled = false;
+  startSelectedFile();
 })();

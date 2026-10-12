@@ -33,7 +33,7 @@
     a { color: #aabbff; }
   </style>
   <script src="patch-config.js?v=20261012-1" defer></script>
-  <script src="patcher.js?v=20261012-1" defer></script>
+  <script src="patcher.js?v=20261012-2" defer></script>
 </head>
 <body>
   <main>
@@ -43,9 +43,9 @@
 
     <div class="panel">
       <label for="iso">Choose your original ISO</label>
-      <input id="iso" type="file" accept=".iso,application/octet-stream" aria-describedby="status">
+      <input id="iso" type="file" accept=".iso,application/octet-stream" aria-describedby="status" disabled>
       <progress id="progress" max="100" value="0" aria-label="Installation progress" hidden></progress>
-      <p id="status" role="status" aria-live="polite">No file selected.</p>
+      <p id="status" role="status" aria-live="polite">Loading installer…</p>
       <button id="cancel" type="button" hidden>Cancel</button>
       <div id="result" hidden>
         <h2 id="result-title"></h2>
