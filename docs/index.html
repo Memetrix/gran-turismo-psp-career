@@ -47,17 +47,17 @@
     </div>
 
     <p class="small">Use a copy of your ISO when applying the patch with <a href="https://deltapatcher.net/">Delta Patcher</a>. See the <a href="https://github.com/Memetrix/gran-turismo-psp-career/blob/main/INSTALL.md">installation guide</a> for the three supported USA versions and save instructions. The European version is not supported yet.</p>
-    <details><summary>What does this page check?</summary><p>It reads the file size and CRC32 locally. Delta Patcher then verifies the original image before applying the patch. Supported USA CRC32 values: <code>9613AC93</code>, <code>1EADB6B4</code>, and <code>71DCC467</code>. If you choose an already patched ISO, it checks that it is the finished 1.0.0 image (CRC32 <code>5FCB3D96</code>).</p></details>
+    <details><summary>What does this page check?</summary><p>It reads the file size and CRC32 locally. Delta Patcher then verifies the original image before applying the patch. Supported USA CRC32 values: <code>9613AC93</code>, <code>1EADB6B4</code>, and <code>71DCC467</code>. If you choose an already patched ISO, it checks that it is the finished 1.1 image (CRC32 <code>A034807E</code>).</p></details>
   </main>
   <script>
     const expectedSize = 1097826304;
-    const patchedSize = 1132199936;
-    const patchedCrc = '5FCB3D96';
-    const release = 'https://github.com/Memetrix/gran-turismo-psp-career/releases/download/v1.0.0/';
+    const patchedSize = 1137475584;
+    const patchedCrc = 'A034807E';
+    const release = 'https://github.com/Memetrix/gran-turismo-psp-career/releases/download/v1.1/';
     const variants = {
-      '9613AC93': ['USA UMD v1.00', 'Gran-Turismo-PSP-Career-v1.0.0-USA-UMD-v1.xdelta'],
-      '1EADB6B4': ['USA UMD v2.00', 'Gran-Turismo-PSP-Career-v1.0.0-USA-UMD-v2.xdelta'],
-      '71DCC467': ['Originally supported USA v2.00 image', 'Gran-Turismo-PSP-Career-v1.0.0.xdelta']
+      '9613AC93': ['USA UMD v1.00', 'Gran-Turismo-PSP-Career-v1.1.xdelta'],
+      '1EADB6B4': ['USA UMD v2.00', 'Gran-Turismo-PSP-Career-v1.1.xdelta'],
+      '71DCC467': ['Originally supported USA v2.00 image', 'Gran-Turismo-PSP-Career-v1.1.xdelta']
     };
     const table = new Uint32Array(256);
     for (let i = 0; i < 256; i++) {
@@ -84,7 +84,7 @@
       status.textContent = 'Checking ' + file.name + '…';
       try {
         if (file.size !== expectedSize && file.size !== patchedSize) {
-          showUnsupported('This is not one of the supported USA images or the finished 1.0.0 ISO. Check that you selected an unmodified ISO.');
+          showUnsupported('This is not one of the supported USA images or the finished 1.1 ISO. Check that you selected an unmodified ISO.');
           return;
         }
         let crc = 0xFFFFFFFF;
@@ -99,8 +99,8 @@
         const checksum = ((crc ^ 0xFFFFFFFF) >>> 0).toString(16).padStart(8, '0').toUpperCase();
         if (file.size === patchedSize) {
           if (checksum === patchedCrc) {
-            title.textContent = 'This is the finished 1.0.0 ISO';
-            description.textContent = 'CRC32 ' + checksum + ' matches Gran Turismo PSP Career 1.0.0. Copy it to your PSP or open it in PPSSPP.';
+            title.textContent = 'This is the finished 1.1 ISO';
+            description.textContent = 'CRC32 ' + checksum + ' matches Gran Turismo PSP Career 1.1. Copy it to your PSP or open it in PPSSPP.';
             result.hidden = false;
             status.textContent = 'Check complete.';
           } else {

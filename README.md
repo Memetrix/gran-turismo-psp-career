@@ -1,74 +1,125 @@
 <p align="center"><img src="art/gtpsp-career-banner-1500x500.png" alt="Gran Turismo PSP Career" width="900"></p>
 
-# Gran Turismo PSP Career 1.0.0
+# Gran Turismo PSP Career 1.1
 
-Released on October 1, 2026, seventeen years to the day after Gran Turismo PSP.
+Gran Turismo PSP came out in 2009 with more than 800 cars and no career mode. Gran Turismo PSP Career is a free fan patch that adds one inside the game. It also brings back five tracks that were cut from the game, and adds 32 cars.
 
-Gran Turismo PSP Career is a fan-made career mode for **Gran Turismo PSP USA (UCUS98632 v2.00)**: nine halls of events, prize cars, a parts shop, championships and endurance races, all on GT PSP's own cars and tracks.
+[**Download the patch**](https://github.com/Memetrix/gran-turismo-psp-career/releases/latest) · [**Install guide**](https://memetrix.github.io/gran-turismo-psp-career/)
 
-It is an independent project, not a continuation or rework of anyone else's mod.
+[![Watch the trailer](screenshots/1.1/eight-car-grid.jpg)](https://youtu.be/L62twE_V2KU)
 
-## Watch the trailer
+<details>
+<summary>Already played 1.0? What's new in 1.1</summary>
 
-[![Gran Turismo PSP Career 1.0 trailer](screenshots/trailer-thumbnail-1.0.jpg)](https://youtu.be/rywN0wkKEjA)
+31 cars from GT1 to GT5, grids of up to eight cars, the five cut tracks in Single Race and Time Trial, adjustable gearboxes, LSD, brake balance, factory repaints, HUD editing and analog pedals. Career saves from 1.0 are supported; back up yours before updating.
+
+</details>
+
+## Career
+
+- **289 events in nine halls**, from Beginner to Endurance. 125 are the classic Gran Turismo 4 events, from the Sunday Cup to the Gran Turismo World Championship. The other 164 are new.
+- **74 championships** with the same rivals all season.
+- **18 endurance races** up to 24 hours, saved in segments.
+- **Prize cars from 262 events.**
+- **Rally, dirt and snow** events.
+- **Licences** as in GT4, earned in GT PSP's own Driving Challenge.
+- **Every dealer is open every day**, and you can sell your cars.
+
+## Five cut tracks
+
+Complex String, Smokey Mountain, Tahiti Dirt, Rome and Hong Kong were cut from GT PSP. You can race them in the career, Single Race and Time Trial, and they run on a real PSP.
+
+## 32 cars
+
+31 cars from other Gran Turismo games. They are at the dealers, and each one is the prize of a career event:
+
+- **Aston Martin** DB7 Vantage Coupe '00, DB9 '03, V8 Vantage '99, V12 Vanquish '04 (GT4)
+- **Audi** Auto Union V16 Type C Streamline '37 (GT4)
+- **Autobianchi** A112 Abarth '79 (GT4)
+- **Caterham** Seven Fireblade '02 (GT4)
+- **Chrysler** Prowler '02 (GT4)
+- **Daihatsu** Midget '63 (GT4)
+- **Dodge** Concept Car '97 (GT1)
+- **Ford** GT40 Road Car '66 (GT3), GT90 '95 (GT2), Model T Tourer '15 (GT4)
+- **Holden** Commodore SS '04, Monaro CV8 '04 (GT4)
+- **Hyundai** Accent Rally Car '01 (GT4)
+- **Jaguar** XFR '10 (GT5)
+- **Jay Leno** Tank Car '03 (GT4)
+- **Lamborghini** NOMAD Diablo GT-1 '00 (GT5)
+- **Mazda** Axela 23S '03 (GT5)
+- **Mercedes-Benz** Benz Patent Motor Wagen 1886, Daimler Motor Carriage 1886 (GT4)
+- **MG** MGF '97, TF160 '03 (GT4)
+- **Mitsubishi** Lancer Evolution VII Rally Car Prototype '01 (GT3)
+- **Nike** One 2022 (GT4)
+- **Polyphony Digital** F686/M (GT3)
+- **Renault** Espace F1 '95 (GT2)
+- **Toyota** GT-ONE Road Car '99 (GT3), Motor Triathlon Race Car '04 (GT4)
+- **Vector** M12 '97 (GT2), at the Lamborghini dealer
+
+And the **Ferrari 458 Italia**, which Polyphony planned for GT PSP and cut. Its data and engine sound come from Gran Turismo 5. It is at the Ferrari dealer and is the prize for Dream Machines.
+
+## Racing
+
+- **Up to eight cars on the grid**, in the career and in Arcade. The PSP-1000 races four.
+- **Race HUD** presets and editor.
+- **Analog throttle and brake** on the right stick.
+- **Widescreen** aspect ratio in Options → Display.
+- **Burnout mode.**
+
+## Tuning
+
+Parts use GT4 (USA) prices:
+
+- Engine upgrades (turbo, NA tune, supercharger and more) and weight reduction
+- Gearboxes with the final drive and every ratio
+- LSD and brake balance
+- Tyres for tarmac, dirt and snow
+- Suspension kits
+- Repaint in the car's factory colours
 
 ## In the game
 
-| Career halls | Tuning shop |
+| Career | Eight-car grids |
 | --- | --- |
-| ![Career halls](screenshots/02-career-halls.png) | ![Tuning shop](screenshots/06-tuning-shop.png) |
-| Championship | Hong Kong |
-| ![Championship](screenshots/04-championship.png) | ![Hong Kong race](screenshots/10-hong-kong.png) |
+| ![Career halls](screenshots/02-career-halls.png) | ![Eight-car grid](screenshots/1.1/eight-car-grid.jpg) |
 
-![Ferrari 458 Italia in the showroom](screenshots/11-458-showroom.png)
+| Gearboxes | Suspension |
+| --- | --- |
+| ![Gearbox ratios](screenshots/1.1/gearbox.jpg) | ![Suspension settings](screenshots/1.1/suspension.jpg) |
 
-## Download and install
+| Factory colours | HUD editor |
+| --- | --- |
+| ![Factory repaint](screenshots/1.1/factory-repaint.jpg) | ![HUD editor](screenshots/1.1/hud-editor.jpg) |
 
-You need your own, unmodified **Gran Turismo PSP USA** ISO. The patch does not include the game.
+| Ferrari 458 Italia | Jay Leno's Tank Car |
+| --- | --- |
+| ![Ferrari 458](screenshots/1.1/ferrari-458.jpg) | ![Tank Car](screenshots/1.1/tank-car.jpg) |
 
-1. **[Find the right patch for your ISO](https://memetrix.github.io/gran-turismo-psp-career/)**: the page checks your ISO on your device and links the matching patch. The ISO is never uploaded.
-2. Apply the `.xdelta` with Delta Patcher (Windows, macOS) or UniPatcher (Android). [INSTALL.md](INSTALL.md) has the steps and the table of patches.
-3. Copy the finished ISO to your PSP's `ISO` folder or open it in PPSSPP.
+| Hong Kong | Snow rally |
+| --- | --- |
+| ![Hong Kong](screenshots/10-hong-kong.png) | ![Snow rally](screenshots/1.1/snow-rally.jpg) |
 
-All downloads are on the [1.0.0 release page](https://github.com/Memetrix/gran-turismo-psp-career/releases/tag/v1.0.0).
+## Installing
 
-The three `.xdelta` patches are also on the [Internet Archive mirror](https://archive.org/details/gran-turismo-psp-career-1.0.0), alongside screenshots and the trailer.
+You need your own unmodified Gran Turismo PSP ISO, USA version 1.00 or 2.00. One patch, `Gran-Turismo-PSP-Career-v1.1.xdelta` from the [1.1 release page](https://github.com/Memetrix/gran-turismo-psp-career/releases/latest), works with all three known USA dumps of the game. Apply it to your ISO with Delta Patcher on Windows or macOS, or UniPatcher on Android; the install guide has the steps. The patched game runs on a PSP with custom firmware and in PPSSPP. The European version is not supported.
 
-## Saves
+The career has its own save and copies your garage and credits from your normal save, which stays untouched.
 
-No game ISO, save file, or test profile is included in this release. Back up your savedata before installing. The career uses its own `UCUS98632-CAREER` slot; on first launch it copies the garage and credits from the stock `UCUS98632-GAMEDAT` slot when present. The stock slot is not overwritten.
+Install guide: https://memetrix.github.io/gran-turismo-psp-career/
 
-The career remembers bought tuning for up to **128 cars**. Beyond that, a new car cannot be tuned until a tuned car is sold.
+| File | Size | CRC32 | SHA-256 |
+| --- | --- | --- | --- |
+| Gran-Turismo-PSP-Career-v1.1.xdelta | 39,563,844 bytes | `EBE92C20` | `69d45a2436f453b76857a910de21f5811df34955dc4caa389ec149affef42a49` |
+| Patched ISO | 1,137,475,584 bytes | `A034807E` | `ae3d5268a3cc8777ba45e9bf00e3f3870a4cba0c1d5ee6f92ad7682cf4a95213` |
 
-## What's in 1.0.0
-
-- **Five lost tracks, racing on a real PSP:** Complex String, Smokey Mountain, Tahiti Dirt, Rome and Hong Kong were cut from GT PSP. They are back as full events in the career and run on PSP hardware, not only in an emulator.
-- **289 events** across nine halls: Beginner, Japanese, European, American, Professional, Extreme, Special Conditions, Endurance and One-Make.
-- Of these, **125 are classic GT4 events** played by the original game's rules, listed first in their halls. The other **164 are the career's own**, with rules of their own, including power limits in Beginner.
-- **Ferrari 458 Italia:** We found a mention of it in GT PSP's code: an entry in the car list and one color, Rosso Chiaro. Polyphony planned the car and cut it before release. This mod adds it, with its data and engine sound ported from Gran Turismo 5. Sold at the Ferrari dealer for 283,000 Cr.
-- **18 endurance races** at classic length, up to 24 hours, split into saved segments.
-- **Championships** with shared points and the same rivals through the season.
-- **Parts shop** priced after GT4 (USA): engine upgrades, weight reduction, suspension and tyres, including dirt and snow. Almost every car can be tuned; the formula cars are limited, as in GT4.
-- **Suspension screen in real units:** springs in kgf/mm, ride height in mm, camber in degrees. Tyre grip is shown as a friction coefficient, with the surface it is for: tarmac, dirt or snow.
-- **Snow tyres as in GT4,** with their own compound on snow and dirt.
-- **Repeatable prizes** in the career's own events: win the event again with no copy of its prize car in your garage, and you get the car again. The classic GT4 events give their prize car for the first win only, as in GT4.
-- **Selling cars:** up to 500,000 Cr a car sells back for a quarter of its price; dearer ones for a tenth, never less than 125,000 Cr.
-- **Every dealer is open every day,** as in GT4.
-- Its own key art and XMB icon.
+The patch accepts these USA ISOs (CRC32): `9613AC93` (UMD v1.00), `1EADB6B4` (UMD v2.00), `71DCC467` (v2.00). All three give the same patched ISO.
 
 ## Known issues
 
-- **Rome runs slow** at the PSP's standard CPU clock: about 0.7x speed (50 seconds of game time per 1:10 of real time). The races are playable and finish normally. For full speed, set the game CPU clock to 333 MHz in your custom firmware's menu; no plugin is needed.
-- **Graphical glitches on all lost tracks**, most visible on Complex String. They don't affect driving. Complex String, Hong Kong, Smokey Mountain and Tahiti Dirt run at full speed.
-- **Tahiti Dirt replays** use camera positions from another track, so the replay can show the sea and cars in the air. The race itself is not affected.
-- **Car Options after leaving a race freezes the game.** If you pause a career race, choose Exit and then open Car Options on the grid, the game hangs. Restart the event from the menu instead. A fix is coming in the next update.
-- When an endurance segment starts near the finish line, the **best-lap display** can show the first partial lap as a very short lap. The race result is not affected.
-- **PSP-1000: a race may not start.** On a PSP-1000 the game can stay on the loading screen before a race. The PSP-1000 leaves the game about 350 KB of spare memory; if plugins and the ISO driver take more than that, no race loads, whatever the car and its tuning. Turn off game plugins and try again, and tell us your firmware and plugins if it still happens.
+- The cut tracks have small graphical glitches.
 
-Played on a PSP Go with custom firmware (ARK-5).
+Bug reports: https://github.com/Memetrix/gran-turismo-psp-career/issues, with your console or PPSSPP version, the event and round, and what happened. Please don't post or ask for ISOs.
 
-## Report a problem
+Source (GPL-3.0) is attached to the [release](https://github.com/Memetrix/gran-turismo-psp-career/releases/latest); credits and licences are in [NOTICE.md](NOTICE.md). Step-by-step install: [INSTALL.md](INSTALL.md).
 
-[Open an issue](https://github.com/Memetrix/gran-turismo-psp-career/issues) with the console model or PPSSPP version, event and round, what happened, and whether it survives a cold launch. Do not post copyrighted ISO files or personal saves publicly.
-
-Source code (GPL-3.0) and licence notices: see [NOTICE.md](NOTICE.md) and the source archive on the release page.
+*Gran Turismo is a trademark of Sony Interactive Entertainment. This is a fan project, not affiliated with or endorsed by Sony Interactive Entertainment or Polyphony Digital. The download is a patch, not a game ISO; you need your own copy of the game.*
