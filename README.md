@@ -6,7 +6,7 @@ Gran Turismo PSP came out in 2009 with more than 800 cars and no career mode. Gr
 
 [**Download the patch**](https://github.com/Memetrix/gran-turismo-psp-career/releases/latest) · [**Install guide**](https://memetrix.github.io/gran-turismo-psp-career/)
 
-![Eight-car racing in Gran Turismo PSP Career](screenshots/1.1/eight-car-grid.jpg)
+[![Watch the Gran Turismo PSP Career 1.1 trailer](art/youtube-thumbnail-1.1.jpg)](https://youtu.be/L62twE_V2KU)
 
 <details>
 <summary>Already played 1.0? What's new in 1.1</summary>
