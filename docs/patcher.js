@@ -53,9 +53,9 @@
     stop(false);
     clearDownload();
     result.hidden = true;
-    if (file.size !== CAREER_PATCH.inputBytes && file.size !== CAREER_PATCH.outputBytes) {
+    if (!CAREER_PATCHES.some(patch => file.size === patch.inputBytes || file.size === patch.outputBytes)) {
       status.textContent = 'This ISO is not supported.';
-      showResult('Choose an original USA ISO', 'Use an unmodified Gran Turismo PSP USA ISO. Extract CHD, CSO or ZIP files to a plain ISO first.');
+      showResult('Choose an original ISO', 'Use an unmodified Gran Turismo PSP ISO, USA or Europe. Extract CHD, CSO or ZIP files to a plain ISO first.');
       return;
     }
     if (typeof Worker !== 'function' || !window.crypto || !window.crypto.subtle) {
@@ -69,7 +69,7 @@
     status.textContent = 'Checking your ISO…';
     let current;
     try {
-      current = new Worker('patch-worker.js?v=20261012-1');
+      current = new Worker('patch-worker.js?v=20261118-1');
     } catch (error) {
       fail('This browser could not start the installer. Try another browser or use the manual installation guide.');
       return;
@@ -84,14 +84,14 @@
       } else if (data.type === 'already-patched') {
         stop(false);
         status.textContent = 'Check complete.';
-        showResult('This is the finished 1.1 ISO', 'Your file is ready to play. Open it in PPSSPP or copy it to your PSP’s ISO folder.');
+        showResult('This is the finished ' + data.version + ' ISO (' + data.region + ')', 'Your file is ready to play. Open it in PPSSPP or copy it to your PSP’s ISO folder.');
       } else if (data.type === 'ready') {
         // The transferred buffer belongs to this page; stop releases the source ISO.
         stop(false);
         try {
           outputUrl = URL.createObjectURL(new Blob([data.buffer], { type: 'application/octet-stream' }));
           save.href = outputUrl;
-          save.download = CAREER_PATCH.outputName;
+          save.download = data.name;
           save.hidden = false;
           status.textContent = 'Patch applied and checked.';
           showResult('Your career ISO is ready', 'Save the ISO below, then open it in PPSSPP or copy it to your PSP’s ISO folder.');
@@ -113,7 +113,7 @@
     }
   }
 
-  if (typeof CAREER_PATCH === 'undefined') {
+  if (typeof CAREER_PATCHES === 'undefined' || !CAREER_PATCHES.length) {
     fail('The installer could not load. Reload this page or use the manual installation guide below.');
     input.disabled = true;
     return;

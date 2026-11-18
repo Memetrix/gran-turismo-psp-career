@@ -25,7 +25,7 @@ try {
   await delayed.locator('#iso').setInputFiles(wrong);
   release();
   await delayed.waitForLoadState('load');
-  await delayed.getByRole('heading', { name: 'Choose an original USA ISO' }).waitFor();
+  await delayed.getByRole('heading', { name: 'Choose an original ISO' }).waitFor();
   assert.equal(await delayed.locator('#iso').isEnabled(), true);
   check('selection restored before initialization is handled');
   await delayed.close();
@@ -47,17 +47,17 @@ try {
     document.getElementById('iso').files = transfer.files;
     window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true }));
   });
-  await page.getByRole('heading', { name: 'Choose an original USA ISO' }).waitFor();
+  await page.getByRole('heading', { name: 'Choose an original ISO' }).waitFor();
   check('pageshow handles a restored selection without change');
   await page.evaluate(() => {
     const transfer = new DataTransfer();
     const file = new File(['fixture'], 'fixture.iso');
-    Object.defineProperty(file, 'size', { value: CAREER_PATCH.inputBytes });
+    Object.defineProperty(file, 'size', { value: CAREER_PATCHES[0].inputBytes });
     transfer.items.add(file);
     const input = document.getElementById('iso');
     input.files = transfer.files;
     // DataTransfer clones File metadata, so keep this UI fixture at supported size.
-    Object.defineProperty(input.files[0], 'size', { value: CAREER_PATCH.inputBytes });
+    Object.defineProperty(input.files[0], 'size', { value: CAREER_PATCHES[0].inputBytes });
     input.dispatchEvent(new Event('change'));
     window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true }));
     input.dispatchEvent(new Event('change'));
@@ -66,14 +66,14 @@ try {
   assert.equal(await page.locator('#iso').isDisabled(), true);
   check('restoring an active page does not start a second worker');
   await page.evaluate(() => {
-    testWorkers[0].onmessage({ data: { type: 'ready', buffer: new ArrayBuffer(8) } });
+    testWorkers[0].onmessage({ data: { type: 'ready', buffer: new ArrayBuffer(8), name: 'fixture.iso' } });
     window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true }));
   });
   assert.equal(await page.evaluate(() => testWorkers.length), 1);
   assert.equal(await page.locator('#save-iso').isVisible(), true);
   check('restoring a completed page preserves its download');
   await page.locator('#iso').setInputFiles(wrong);
-  await page.getByRole('heading', { name: 'Choose an original USA ISO' }).waitFor();
+  await page.getByRole('heading', { name: 'Choose an original ISO' }).waitFor();
   assert.equal(await page.locator('#save-iso').isVisible(), false);
   check('new selection clears the previous download');
   await page.close();

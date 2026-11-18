@@ -1,4 +1,4 @@
-importScripts('patch-config.js?v=20261012-1', 'vendor/rompatcher/BinFile.js',
+importScripts('patch-config.js?v=20261118-1', 'vendor/rompatcher/BinFile.js',
   'vendor/rompatcher/HashCalculator.js', 'vendor/rompatcher/RomPatcher.format.vcdiff.js');
 
 const CHUNK_BYTES = 4 * 1024 * 1024;
@@ -53,7 +53,12 @@ function outputCrc(bytes) {
   return crcHex(crc);
 }
 
-async function loadPatch() {
+// The release whose original (inputBytes) or finished ISO (outputBytes) has this size; sizes are unique per region.
+function patchForSize(size) {
+  return CAREER_PATCHES.find(patch => patch.inputBytes === size || patch.outputBytes === size) || null;
+}
+
+async function loadPatch(CAREER_PATCH) {
   update('Downloading the career patch…', 0);
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 180000);
@@ -95,27 +100,29 @@ async function loadPatch() {
 self.onmessage = async ({ data }) => {
   try {
     const file = data.file;
-    if (!(file instanceof File) || (file.size !== CAREER_PATCH.inputBytes && file.size !== CAREER_PATCH.outputBytes)) {
-      throw new Error('Choose an unmodified Gran Turismo PSP USA ISO.');
+    const CAREER_PATCH = file instanceof File ? patchForSize(file.size) : null;
+    if (!CAREER_PATCH) {
+      throw new Error('Choose an unmodified Gran Turismo PSP ISO (USA or Europe).');
     }
     const checksum = await fileCrc(file);
     if (file.size === CAREER_PATCH.outputBytes) {
-      if (checksum !== CAREER_PATCH.outputCrc32) throw new Error('This is not the finished 1.1 ISO. Choose your original USA ISO to install the current release.');
-      self.postMessage({ type: 'already-patched' });
+      if (checksum !== CAREER_PATCH.outputCrc32) throw new Error('This is not the finished ' + CAREER_PATCH.version + ' ISO. Choose your original ' + CAREER_PATCH.region + ' ISO to install the current release.');
+      self.postMessage({ type: 'already-patched', version: CAREER_PATCH.version, region: CAREER_PATCH.region });
       return;
     }
     if (!Object.prototype.hasOwnProperty.call(CAREER_PATCH.inputs, checksum)) {
-      throw new Error('This ISO is not supported (CRC32 ' + checksum + '). Choose an unmodified USA ISO.');
+      throw new Error('This ISO is not supported (CRC32 ' + checksum + '). Choose an unmodified ' + CAREER_PATCH.region + ' ISO.');
     }
-    const patchBuffer = await loadPatch();
+    update('Detected: ' + CAREER_PATCH.inputs[checksum] + '.');
+    const patchBuffer = await loadPatch(CAREER_PATCH);
     update('Reading your original ISO…');
     const original = new BinFile(await file.arrayBuffer());
     update('Applying the career patch… Keep this page open.');
     const patched = VCDIFF.fromFile(new BinFile(patchBuffer)).apply(original, true);
     if (patched.fileSize !== CAREER_PATCH.outputBytes || outputCrc(patched._u8array) !== CAREER_PATCH.outputCrc32) {
-      throw new Error('The finished ISO failed its check. Please retry using your original USA ISO.');
+      throw new Error('The finished ISO failed its check. Please retry using your original ' + CAREER_PATCH.region + ' ISO.');
     }
-    self.postMessage({ type: 'ready', buffer: patched._u8array.buffer }, [patched._u8array.buffer]);
+    self.postMessage({ type: 'ready', buffer: patched._u8array.buffer, name: CAREER_PATCH.outputName }, [patched._u8array.buffer]);
   } catch (error) {
     let message = error.message || 'Could not finish the patch. Please try again.';
     if (error.name === 'AbortError') message = 'The patch download timed out. Check your connection and try again.';

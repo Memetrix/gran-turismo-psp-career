@@ -1,14 +1,20 @@
-// Requires Playwright + Chrome. Usage: node scripts/test-browser-patcher.mjs URL ORIGINAL_ISO EVIDENCE_DIR [SECOND_ORIGINAL_ISO]
+// Requires Playwright + Chrome. Usage: node scripts/test-browser-patcher.mjs URL ORIGINAL_ISO EVIDENCE_DIR [MORE_ORIGINAL_ISOS...]
+// Originals may be USA or Europe; the expected result is chosen by the original's size.
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { createReadStream } from 'node:fs';
-import { mkdir, writeFile, open, unlink } from 'node:fs/promises';
+import { mkdir, writeFile, open, unlink, stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
-const [url, original, evidence, second] = process.argv.slice(2);
+const [url, original, evidence, ...more] = process.argv.slice(2);
 if (!url || !original || !evidence) throw new Error('Supply URL, original ISO and evidence directory.');
 await mkdir(evidence, { recursive: true });
-const expectedSha = 'ae3d5268a3cc8777ba45e9bf00e3f3870a4cba0c1d5ee6f92ad7682cf4a95213';
+const releases = {
+  1097826304: { region: 'USA', name: 'Gran-Turismo-PSP-Career-v1.1.1.iso', bytes: 1137475584,
+    sha256: 'f1dddd11c0f8045732b3e143ba63f530779d06f796c525d2629a9d5d3cc23246' },
+  1177026560: { region: 'Europe', name: 'Gran-Turismo-PSP-Career-v1.1.1-Europe.iso', bytes: 1222475776,
+    sha256: '63c8fd320acd0b2e367012eb18bba4e55fbd5825dfb35f2ef39977a819d6e38f' }
+};
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const context = await browser.newContext({ acceptDownloads: true, viewport: { width: 1100, height: 900 } });
 const page = await context.newPage();
@@ -20,7 +26,7 @@ const check = name => { report.checks.push(name); console.log('PASS ' + name); }
 try {
   await page.goto(url);
   await page.locator('#iso').setInputFiles({ name: 'wrong.iso', mimeType: 'application/octet-stream', buffer: Buffer.from('wrong image') });
-  await page.getByRole('heading', { name: 'Choose an original USA ISO' }).waitFor();
+  await page.getByRole('heading', { name: 'Choose an original ISO' }).waitFor();
   assert.equal(report.requests.some(r => r.url.endsWith('.xdelta')), false);
   check('wrong size rejected before downloading patch');
 
@@ -30,7 +36,9 @@ try {
   assert.equal(await page.locator('#iso').isEnabled(), true);
   check('cancel restores file selection');
 
-  for (const iso of [original, second].filter(Boolean)) {
+  for (const iso of [original, ...more]) {
+    const expected = releases[(await stat(iso)).size];
+    assert.ok(expected, 'not a supported original size: ' + iso);
     const start = performance.now();
     await page.locator('#iso').setInputFiles(iso);
     await page.getByRole('heading', { name: 'Your career ISO is ready' }).waitFor({ timeout: 240000 });
@@ -38,18 +46,18 @@ try {
     const downloadPending = page.waitForEvent('download');
     await page.locator('#save-iso').click();
     const download = await downloadPending;
-    assert.equal(download.suggestedFilename(), 'Gran-Turismo-PSP-Career-v1.1.iso');
+    assert.equal(download.suggestedFilename(), expected.name);
     const path = await download.path();
     const hash = createHash('sha256');
     let bytes = 0;
     for await (const chunk of createReadStream(path)) { hash.update(chunk); bytes += chunk.length; }
     const sha256 = hash.digest('hex');
-    assert.equal(bytes, 1137475584);
-    assert.equal(sha256, expectedSha);
+    assert.equal(bytes, expected.bytes);
+    assert.equal(sha256, expected.sha256);
     report.outputs.push({ input: iso, bytes, sha256, seconds: (performance.now() - start) / 1000 });
     check('saved ISO matches release SHA-256: ' + iso);
     await page.locator('#iso').setInputFiles(path);
-    await page.getByRole('heading', { name: 'This is the finished 1.1 ISO' }).waitFor({ timeout: 120000 });
+    await page.getByRole('heading', { name: 'This is the finished 1.1.1 ISO (' + expected.region + ')' }).waitFor({ timeout: 120000 });
     assert.equal(await page.locator('#save-iso').isVisible(), false);
     check('finished image recognised without repatching');
     // Only remove this test's temporary browser download, after hashing it.
