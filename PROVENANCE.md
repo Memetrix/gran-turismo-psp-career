@@ -12,7 +12,7 @@ The separate browser installer under `docs/` is this project's website code. Its
 `docs/vendor/rompatcher/` come from [RomPatcher.js](https://github.com/marcrobledo/RomPatcher.js), commit
 `3183884086825c3a57c72026234debcef1e2240c`, under MIT. Copyright and licence are retained; `UPSTREAM.json`
 records the local variable declaration fix. The website serves a byte-identical copy of the published
-1.1 xdelta. These installer files are not part of the patched game or the 1.1 gameplay source archive.
+1.1.1 xdelta files. These installer files are not part of the patched game or the 1.1.1 gameplay source archive.
 
 | Part | Source | Licence |
 | --- | --- | --- |
