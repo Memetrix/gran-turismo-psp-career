@@ -4,7 +4,7 @@
 
 Gran Turismo PSP came out in 2009 with more than 800 cars and no career mode. Gran Turismo PSP Career is a free fan patch that adds one inside the game. It also brings back five tracks that were cut from the game, and adds 32 cars.
 
-[**Download the patch**](https://github.com/Memetrix/gran-turismo-psp-career/releases/tag/v1.1.1) · [**Install guide**](https://memetrix.github.io/gran-turismo-psp-career/)
+[**Download the patch**](https://github.com/Memetrix/gran-turismo-psp-career/releases/tag/v1.1.1) · [**Install guide**](https://memetrix.github.io/gran-turismo-psp-career/) · [**Discord**](https://discord.gg/3vD3b9vtvH)
 
 [![Watch the Gran Turismo PSP Career 1.1 trailer](art/youtube-thumbnail-1.1.jpg)](https://youtu.be/L62twE_V2KU)
 
@@ -182,7 +182,7 @@ Choose 5 or 6 cars in Options → Extended Grid, or set the CPU clock above 333 
 - On a PSP, the frame rate drops on Rome and Complex String. For full speed, set the CPU clock above 333 MHz in your custom firmware settings.
 - The cut tracks have small graphical glitches.
 
-Bug reports: https://github.com/Memetrix/gran-turismo-psp-career/issues, with your console or PPSSPP version, the event and round, and what happened. Please don't post or ask for ISOs.
+Help, news and bug reports: join the [Discord server](https://discord.gg/3vD3b9vtvH) and post in #gtpsp-career, or open an issue at https://github.com/Memetrix/gran-turismo-psp-career/issues. Include your console or PPSSPP version, the event and round, and what happened. Please don't post or ask for ISOs.
 
 Source (GPL-3.0) is attached to the [release](https://github.com/Memetrix/gran-turismo-psp-career/releases/tag/v1.1.1); credits and licences are in [NOTICE.md](NOTICE.md). Step-by-step install: [INSTALL.md](INSTALL.md).
 
